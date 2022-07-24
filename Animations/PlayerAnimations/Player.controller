@@ -158,11 +158,11 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: SpeedY
     m_EventTreshold: 0
-  - m_ConditionMode: 4
-    m_ConditionEvent: IsAtackBasic
+  - m_ConditionMode: 1
+    m_ConditionEvent: BasicAtack
     m_EventTreshold: 1
-  - m_ConditionMode: 4
-    m_ConditionEvent: IsDashAtack
+  - m_ConditionMode: 1
+    m_ConditionEvent: DashAtack
     m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6973975460048907402}
@@ -242,8 +242,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: IsDashAtack
+  - m_ConditionMode: 1
+    m_ConditionEvent: DashAtack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1654346662275096948}
@@ -410,8 +410,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: OnFloor
     m_EventTreshold: 0
-  - m_ConditionMode: 3
-    m_ConditionEvent: IsAtackBasic
+  - m_ConditionMode: 1
+    m_ConditionEvent: BasicAtack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3680852566194993973}
@@ -463,8 +463,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: IsAtackBasic
+  - m_ConditionMode: 1
+    m_ConditionEvent: BasicAtack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3680852566194993973}
@@ -503,24 +503,24 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: SpeedY
     m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: IsAtackBasic
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: IsDashAtack
-    m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: IsSlide
     m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: BasicAtack
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: DashAtack
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -561,10 +561,10 @@ AnimatorStateMachine:
     m_Position: {x: 600, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1654346662275096948}
-    m_Position: {x: 590, y: 320, z: 0}
+    m_Position: {x: 610, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3680852566194993973}
-    m_Position: {x: 610, y: 220, z: 0}
+    m_Position: {x: 610, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7553283497318673687}
     m_Position: {x: 590, y: -20, z: 0}
@@ -625,8 +625,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: OnFloor
     m_EventTreshold: 0
-  - m_ConditionMode: 3
-    m_ConditionEvent: IsAtackBasic
+  - m_ConditionMode: 1
+    m_ConditionEvent: BasicAtack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3680852566194993973}
@@ -873,12 +873,12 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
-    m_ConditionEvent: SpeedY
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: OnFloor
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: SpeedY
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2039759057712727824}
   m_Solo: 0
