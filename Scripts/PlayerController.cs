@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb2D;
     
+    [Header("PlayerStatus")]
+    [SerializeField] private float healt;
     [Header("Movimiento")]
 
     private float horizontalMovement = 0f;
@@ -122,10 +124,24 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Fire1") && timeNextHit <= 0){ animator.SetTrigger("BasicAtack"); timeNextHit = timeBetweenHit;}
         else if(Input.GetButtonDown("Fire2") && timeNextHit <=0){ animator.SetTrigger("DashAtack"); timeNextHit = timeBetweenHit;}
         
+    
+    }
+
+    public void TakeDamagePlayer(float damage){
+        healt -= damage;
+        if(healt <= 0){
+            DeadPlayer();
+        }
+        
+    }
+
+    public void DeadPlayer(){
+        animator.SetTrigger("IsDead");
     }
     
     private void OnDrawGizmos(){
      Gizmos.color = Color.green;
         Gizmos.DrawWireCube(floorController.position, boxZize);
     }
+
 }

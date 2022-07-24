@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(healt <=0){Dead();}
     }
 
     public void TakeDamage(float damage){
@@ -24,9 +24,14 @@ public class EnemyController : MonoBehaviour
         if(healt <= 0){
             Dead();
         }
+        
     }
 
     private void Dead(){
         animator.SetTrigger("Dead");
+
     }
+
+    public void TakeHit(){animator.SetTrigger("TakeHit");}
+    
 }
