@@ -32,7 +32,8 @@ public class CombatMele : MonoBehaviour
 
         
         if(timeNextHit > 0 || timeNextHitDash > 0){timeNextHit -= Time.deltaTime; timeNextHitDash -= Time.deltaTime;}
-        Hit();
+        
+        ControlAnimationAtack();
         
     }
     //Hhacer daño dependiendo del golpe
@@ -41,23 +42,29 @@ public class CombatMele : MonoBehaviour
 
         foreach(Collider2D colision in objects){
             if(colision.CompareTag("Enemy")){
-                if(Input.GetButtonDown("Fire1") && timeNextHit <=0){
-                    colision.transform.GetComponent<EnemyController>().TakeDamage(damageHitPlayerBasicAtack);
-                    colision.transform.GetComponent<EnemyController>().TakeHit();
-                    timeNextHit = timeBetweenHit;
-                }else if(Input.GetButtonDown("Fire2") && timeNextHitDash <= 0){
-                    colision.transform.GetComponent<EnemyController>().TakeDamage(damageHitPlayerDashAtack);
-                    colision.transform.GetComponent<EnemyController>().TakeHit();
-                    timeNextHitDash = timeBetweenHitDash;
-                }
-                
+                if(Input.GetButtonDown("Fire1")){                    
+                        colision.transform.GetComponent<EnemyController>().TakeDamage(damageHitPlayerBasicAtack);
+                        colision.transform.GetComponent<EnemyController>().TakeHit();
+                }else if(Input.GetButtonDown("Fire2") ){
+                        colision.transform.GetComponent<EnemyController>().TakeDamage(damageHitPlayerDashAtack);
+                        colision.transform.GetComponent<EnemyController>().TakeHit();
+                    }
+                    
             }
-
-            
         }
     }
 
-    
+    private void ControlAnimationAtack(){
+        if(Input.GetButtonDown("Fire1")  && timeNextHit <=0 ){
+            GetComponent<PlayerController>().AtackOne();
+            Hit();
+             timeNextHit = timeBetweenHit;
+        }else if(Input.GetButtonDown("Fire2") && timeNextHitDash <= 0){
+            GetComponent<PlayerController>().AtackDash();
+            Hit();
+            timeNextHitDash = timeBetweenHitDash;
+        }
+    }
 
     private void OnDrawGizmos(){
         Gizmos.color = Color.red;

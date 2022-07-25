@@ -46,10 +46,9 @@ public class GoblinScript : MonoBehaviour
         Collider2D[] objects = Physics2D.OverlapCircleAll(controllerAtackEnemy.position, radioAtack);
 
         foreach(Collider2D colision in objects){
-            if(colision.CompareTag("Player")){
+            if(colision.CompareTag("Player") && GetComponent<EnemyController>().isDeadEnemy == false){
                 colision.transform.GetComponent<PlayerController>().TakeDamagePlayer(damageHitGoblin);
                 colision.transform.GetComponent<PlayerController>().TakeHitPlayer();
-                
             }
             
         }

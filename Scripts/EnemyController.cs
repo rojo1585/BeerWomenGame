@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] public float healt;
     private Animator animator;
+    public bool isDeadEnemy = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class EnemyController : MonoBehaviour
 
     private void Dead(){
         animator.SetTrigger("Dead");
+        isDeadEnemy = true;
 
     }
 

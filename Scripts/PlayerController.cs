@@ -31,10 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float basicAtack;
     [SerializeField] private float dashAtack;
     [SerializeField] private float slide;
-    public float timeBetweenHit;
-    public float   timeNextHit;
-    public float timeBetweenHitDash;
-    public float   timeNextHitDash;
+   
 
  
     [Header("Animations")]
@@ -59,8 +56,8 @@ public class PlayerController : MonoBehaviour
         dashAtack = Input.GetAxisRaw("Fire2");
         slide = Input.GetAxisRaw("Vertical");
         //atack
-        if(timeNextHit > 0 || timeNextHitDash > 0){timeNextHit -= Time.deltaTime; timeNextHitDash -= Time.deltaTime;}
-        SelectAtack();
+        
+        //SelectAtack();
 
         //mandar al animator la velocidad para que reconosca que se esta moviendo y ejecute la animacion de correr
         animator.SetFloat("Horizontal", Mathf.Abs(horizontalMovement));
@@ -121,14 +118,11 @@ public class PlayerController : MonoBehaviour
     }
 
     //selecciona el tipo de ataque impidiendo realizar dos animiciones a la vez y evalua el tiempo para realizar el proixmo ataqu
-    private void SelectAtack(){
-        
+   // public void SelectAtack(){
+     //   if(Input.GetButtonDown("Fire1") && timeNextHit <= 0){ animator.SetTrigger("BasicAtack"); timeNextHit = timeBetweenHit;}
+       // else if(Input.GetButtonDown("Fire2") && timeNextHitDash <=0){ animator.SetTrigger("DashAtack"); timeNextHitDash = timeBetweenHitDash;}
+    //}
 
-        if(Input.GetButtonDown("Fire1") && timeNextHit <= 0){ animator.SetTrigger("BasicAtack"); timeNextHit = timeBetweenHit;}
-        else if(Input.GetButtonDown("Fire2") && timeNextHitDash <=0){ animator.SetTrigger("DashAtack"); timeNextHitDash = timeBetweenHitDash;}
-        
-    
-    }
     //toma el daño del jugador para evaluar su muerte
     public void TakeDamagePlayer(float damage){
         healt -= damage;
@@ -137,6 +131,15 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+    public void AtackOne(){
+        animator.SetTrigger("BasicAtack");
+    }
+
+    public void AtackDash(){
+        animator.SetTrigger("DashAtack");
+    }
+
+
 
     public void TakeHitPlayer(){
         animator.SetTrigger("TakeHit");

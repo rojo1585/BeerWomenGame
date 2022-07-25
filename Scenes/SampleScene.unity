@@ -2236,6 +2236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healt: 100
+  isDeadEnemy: 0
 --- !u!1 &477245918
 GameObject:
   m_ObjectHideFlags: 0
@@ -20681,7 +20682,7 @@ MonoBehaviour:
   healt: 110
   speedMovement: 100
   motionSmoot: 0
-  jumpForce: 250
+  jumpForce: 200
   isFloor:
     serializedVersion: 2
     m_Bits: 8
@@ -20691,10 +20692,6 @@ MonoBehaviour:
   basicAtack: 0
   dashAtack: 0
   slide: 0
-  timeBetweenHit: 1.8
-  timeNextHit: 0
-  timeBetweenHitDash: 4
-  timeNextHitDash: 0
 --- !u!70 &1049559434
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -20730,7 +20727,7 @@ MonoBehaviour:
   damageHitPlayerDashAtack: 20
   timeBetweenHit: 1.8
   timeNextHit: 0
-  timeBetweenHitDash: 4
+  timeBetweenHitDash: 3.8
   timeNextHitDash: 0
 --- !u!1 &1081502278
 GameObject:
@@ -23129,7 +23126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741152508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.94, y: -0.93, z: -1.0208199}
+  m_LocalPosition: {x: -5.343, y: -0.897, z: -1.0208199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23630,7 +23627,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.68063873, y: 1}
+    m_SensorSize: {x: 0.58483034, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
