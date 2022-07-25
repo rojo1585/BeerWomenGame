@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoxController : MonoBehaviour
 {   
     public GameObject Player;
-    private int healt = 5;
+    //private int healt = 5;
     // Start is called before the first frame update
     void Start()
     {
