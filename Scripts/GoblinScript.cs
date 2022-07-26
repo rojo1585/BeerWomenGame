@@ -33,9 +33,9 @@ public class GoblinScript : MonoBehaviour
        
 
         timeNextAtack -= Time.deltaTime;
-        if(timeNextAtack <=  0){
+        if(timeNextAtack <=  0){ 
             HitGlobin();
-            SelectAtackGoblin();
+            SelectAtackGoblin();            
         }
             
         
@@ -58,8 +58,6 @@ public class GoblinScript : MonoBehaviour
         if(GetComponent<EnemyController>().healt > 0){
             if(timeNextAtack <= 0){ animator.SetTrigger("AtackOne"); timeNextAtack = timeBetweenAtack;}
         }
-        
-       
     }
 
     

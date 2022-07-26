@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2D;
     
     [Header("PlayerStatus")]
-    [SerializeField] private float healt;
+    public float healt;
     [Header("Movimiento")]
 
     private float horizontalMovement = 0f;
@@ -31,7 +31,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float basicAtack;
     [SerializeField] private float dashAtack;
     [SerializeField] private float slide;
-   
+    
+    [Header("Life")]
+    public bool life = true;
 
  
     [Header("Animations")]
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
         //instacia de los objetos 
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+       
     }
 
     // Update is called once per frame
@@ -126,7 +129,7 @@ public class PlayerController : MonoBehaviour
     //toma el daño del jugador para evaluar su muerte
     public void TakeDamagePlayer(float damage){
         healt -= damage;
-        if(healt <= 0){
+        if(healt == 0){
             DeadPlayer();
         }
         
@@ -145,7 +148,17 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("TakeHit");
     }
     public void DeadPlayer(){
-        animator.SetTrigger("IsDead");
+        animator.SetTrigger("IsDead"); 
+        life = false;
+    }
+
+    public void IsPlayerAlive(){
+        if(healt > 0){
+            animator.SetTrigger("IsPlayeAlive");
+            life = true;
+           
+        }else{life = false;}
+        
     }
     
     private void OnDrawGizmos(){

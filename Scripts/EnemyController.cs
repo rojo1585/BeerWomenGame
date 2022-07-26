@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] public float healt;
     private Animator animator;
     public bool isDeadEnemy = false;
+    public float timeToDestroyEnd;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,10 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(healt <=0){Dead();}
+        if(healt <=0){
+            timeToDestroyEnd -= Time.deltaTime;
+            Dead();
+        }
     }
 
     public void TakeDamage(float damage){
@@ -31,8 +35,12 @@ public class EnemyController : MonoBehaviour
     private void Dead(){
         animator.SetTrigger("Dead");
         isDeadEnemy = true;
+         if(timeToDestroyEnd <= 0){
+            Destroy(gameObject);
 
+        }
     }
+
 
     public void TakeHit(){animator.SetTrigger("TakeHit");}
     
