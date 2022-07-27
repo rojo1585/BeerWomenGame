@@ -6,7 +6,7 @@ public class CombatMele : MonoBehaviour
 {
     [SerializeField] private Transform controllerAtack;
     [SerializeField] private float radioAtack;
-    [SerializeField] private float damageHitGoblin;
+    
     [SerializeField] private float damageHitPlayerBasicAtack;
     [SerializeField] private float damageHitPlayerDashAtack;
     public float timeBetweenHit;
@@ -14,15 +14,14 @@ public class CombatMele : MonoBehaviour
     public float timeBetweenHitDash; 
     public float timeNextHitDash;
 
-    
-
-
-   
-
-
     // Start is called before the first frame update
     void Start()
     {
+        radioAtack = 0.1f;
+        damageHitPlayerBasicAtack = 15;
+        damageHitPlayerDashAtack = 30;
+        timeBetweenHit = 1.8f;
+        timeBetweenHitDash = 3.4f;
         
     }
 
@@ -53,7 +52,7 @@ public class CombatMele : MonoBehaviour
             }
         }
     }
-
+    //Controlar animaciones dependiendo del golpe realizado
     private void ControlAnimationAtack(){
         if(Input.GetButtonDown("Fire1")  && timeNextHit <=0 ){
             GetComponent<PlayerController>().AtackOne();

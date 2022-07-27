@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public GameObject Player;
     [SerializeField] public float healt;
     private Animator animator;
+    
     public bool isDeadEnemy = false;
     public float timeToDestroyEnd;
+   
+
+
+    [SerializeField] 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        Player = GameObject.Find("Player");
+        healt = 100;
+        timeToDestroyEnd = 10.0f;
 
     }
 
@@ -41,7 +50,16 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void AtackOne(){
+        animator.SetTrigger("AtackOne");
+    }
 
+    public void AtackTwo(){
+        animator.SetTrigger("AtackTwo");
+    }
     public void TakeHit(){animator.SetTrigger("TakeHit");}
+
     
+    
+
 }

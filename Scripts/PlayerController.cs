@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour
     private bool jump;
 
     [Header("Atack")]
-    [SerializeField] private float basicAtack;
-    [SerializeField] private float dashAtack;
-    [SerializeField] private float slide;
+    private float basicAtack;
+    private float dashAtack;
+    private float slide;
     
     [Header("Life")]
     public bool life = true;
@@ -46,6 +46,11 @@ public class PlayerController : MonoBehaviour
         //instacia de los objetos 
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        healt = 100;
+        speedMovement = 100;
+        motionSmoot = 0.1f;
+        jumpForce = 199;
+
        
     }
 
@@ -129,7 +134,7 @@ public class PlayerController : MonoBehaviour
     //toma el daño del jugador para evaluar su muerte
     public void TakeDamagePlayer(float damage){
         healt -= damage;
-        if(healt == 0){
+        if(healt <= 0){
             DeadPlayer();
         }
         
@@ -152,12 +157,12 @@ public class PlayerController : MonoBehaviour
         life = false;
     }
 
-    public void IsPlayerAlive(){
+    public bool IsPlayerAlive(){
         if(healt > 0){
             animator.SetTrigger("IsPlayeAlive");
             life = true;
-           
-        }else{life = false;}
+            return true;
+        }else{life = false; return false;}
         
     }
     
