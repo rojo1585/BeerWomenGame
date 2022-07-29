@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         speedMovement = 100;
         motionSmoot = 0.1f;
         jumpForce = 199;
+        animator.SetBool("IsDead", false);
 
        
     }
@@ -134,6 +135,7 @@ public class PlayerController : MonoBehaviour
     //toma el daño del jugador para evaluar su muerte
     public void TakeDamagePlayer(float damage){
         healt -= damage;
+        GetComponent<HealtContrroller>().ChangeSlider(damage * 0.01f);
         if(healt <= 0){
             DeadPlayer();
         }
@@ -153,7 +155,7 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("TakeHit");
     }
     public void DeadPlayer(){
-        animator.SetTrigger("IsDead"); 
+        animator.SetBool("IsDead",true); 
         life = false;
     }
 
@@ -165,6 +167,8 @@ public class PlayerController : MonoBehaviour
         }else{life = false; return false;}
         
     }
+
+    
     
     private void OnDrawGizmos(){
      Gizmos.color = Color.green;

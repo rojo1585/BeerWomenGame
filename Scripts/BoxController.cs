@@ -22,6 +22,6 @@ public class BoxController : MonoBehaviour
         Destroy(gameObject);
     }
     private void OnCollisionEneter2D(Collision2D collision){
-        DestroyBox();
+        //if(collision.("Player")){DestroyBox();}
     }
 }

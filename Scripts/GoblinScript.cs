@@ -46,17 +46,21 @@ public class GoblinScript : MonoBehaviour
 
         //Evaluar si el jugador esta dentro del rango de ataque o no 
         distancePlayer= Vector2.Distance(transform.position,Player.transform.position);
-        if(distancePlayer <  rangeVision){
+        if(distancePlayer <  rangeVision && Mathf.Abs(distancePlayer) > 0.2f){
+            GetComponent<EnemyController>().Run();
             FollowPlayer();
+            
         }else{
             DontFollowPlayer();
+            GetComponent<EnemyController>().NoRun();
+
         }
 
 
         
 
         timeNextAtack -= Time.deltaTime;
-        if(timeNextAtack <=  0 && playerController.healt > 0 && Mathf.Abs(distancePlayer) < 1){     
+        if(timeNextAtack <=  0 && playerController.healt >= 0 && Mathf.Abs(distancePlayer) < 1){     
             if(timeNextAtack <= 0 && numAtack == 1 && GetComponent<EnemyController>().healt > 0){GetComponent<EnemyController>().AtackOne(); timeNextAtack = timeBetweenAtack;}
             if(timeNextAtack <= 0 && numAtack == 2 && GetComponent<EnemyController>().healt > 0){GetComponent<EnemyController>().AtackTwo(); timeNextAtack = timeBetweenAtack; }
             HitGlobin();
@@ -90,15 +94,16 @@ public class GoblinScript : MonoBehaviour
         if(direction.x >= 0.0f){ 
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             transform.Translate(Vector3.right* speed * Time.deltaTime);
+            
         }
         else{ 
             transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f); 
             transform.Translate(Vector3.left * speed * Time.deltaTime);
+            
         }
     }
 
-    private void DontFollowPlayer(){
-        
+    private void DontFollowPlayer(){;
         if(direction.x >= 0.0f){ 
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);   
         }

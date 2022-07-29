@@ -59,6 +59,9 @@ public class EnemyController : MonoBehaviour
     }
     public void TakeHit(){animator.SetTrigger("TakeHit");}
 
+    public void Run(){animator.SetBool("Run",true);}
+    public void NoRun(){animator.SetBool("Run",false);}
+
     
     
 
