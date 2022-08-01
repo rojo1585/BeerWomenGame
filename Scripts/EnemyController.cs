@@ -63,6 +63,30 @@ public class EnemyController : MonoBehaviour
     public void Run(){animator.SetBool("Run",true);}
     public void NoRun(){animator.SetBool("Run",false);}
 
+
+    //Girar al enemigo a ver al jugador y seguir si esnta en el rango de vicion
+    public void FollowPlayer(float speed , Vector3 direction){ 
+       if(direction.x >= 0.0f ){ 
+            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            transform.Translate(Vector3.right* speed * Time.deltaTime);
+            
+        }
+        else{ 
+            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f); 
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
+            
+        }
+    }
+
+    public void DontFollowPlayer(Vector3 direction){;
+        if(direction.x >= 0.0f && GetComponent<EnemyController>().isDeadEnemy == false){ 
+            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);   
+        }
+        else{ 
+            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);         
+        }
+    }
+
     
     
 

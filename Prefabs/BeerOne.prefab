@@ -116,3 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healtSlider: {fileID: 0}
   beerOneAddLife: 10
+  playerController: {fileID: 0}
+  beerOne: {fileID: 0}
+  empyBeer: {fileID: 0}
+  timeToDestroy: 0

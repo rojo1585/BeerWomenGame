@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: dd255f029b1eb1347b77fb335d97ea38
+guid: 6d7cd4f7505dc674c891ca8946cfd98b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7441861488978599509
-    second: Attack2_0
+      213: -4795363162621231457
+    second: Flight_0
   - first:
-      213: 8288915215451595207
-    second: Attack2_1
+      213: -3652676412848291748
+    second: Flight_1
   - first:
-      213: 4668938655123782945
-    second: Attack2_2
+      213: -596950462376016933
+    second: Flight_2
   - first:
-      213: 5683539909772271658
-    second: Attack2_3
+      213: -4538786591655478766
+    second: Flight_3
   - first:
-      213: 5764228812365489207
-    second: Attack2_4
+      213: 8639066506597270619
+    second: Flight_4
   - first:
-      213: -1191510351576865934
-    second: Attack2_5
+      213: -4262185617143388622
+    second: Flight_5
   - first:
-      213: -8937499057154260928
-    second: Attack2_6
+      213: 5066340549283584134
+    second: Flight_6
   - first:
-      213: 5293088307283036655
-    second: Attack2_7
+      213: 7784096630628774620
+    second: Flight_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -148,173 +148,185 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack2_0
+      name: Flight_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 150
-        height: 150
+        x: 51
+        y: 57
+        width: 52
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c3d9ea00f953034a9407edb9467b001
-      internalID: 7441861488978599509
+      spriteID: 4b60f3b428266f641882fff33b3d5e5a
+      internalID: -4795363162621231457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack2_1
+      name: Flight_1
       rect:
         serializedVersion: 2
-        x: 150
-        y: 0
-        width: 150
-        height: 150
+        x: 201
+        y: 55
+        width: 58
+        height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4918360589a800d41a2d762c10e1aaa9
-      internalID: 8288915215451595207
+      spriteID: 10226d6044353eb4fa948bd574ea736f
+      internalID: -3652676412848291748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack2_2
+      name: Flight_2
       rect:
         serializedVersion: 2
-        x: 300
-        y: 0
-        width: 150
-        height: 150
+        x: 351
+        y: 58
+        width: 55
+        height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e54e1424e70e6a74dadcf93325cff67b
-      internalID: 4668938655123782945
+      spriteID: 0ad4b872376ed3e4486247ba89b9be8d
+      internalID: -596950462376016933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack2_3
+      name: Flight_3
       rect:
         serializedVersion: 2
-        x: 450
-        y: 0
-        width: 150
-        height: 150
+        x: 501
+        y: 55
+        width: 56
+        height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ba0246a33d42114b98f8cc48a95c779
-      internalID: 5683539909772271658
+      spriteID: 6175273388504464690a5ffdb4b6e945
+      internalID: -4538786591655478766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack2_4
+      name: Flight_4
       rect:
         serializedVersion: 2
-        x: 600
-        y: 0
-        width: 150
-        height: 150
+        x: 651
+        y: 56
+        width: 56
+        height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb5f60ec3c3e590408a03fab726cac7c
-      internalID: 5764228812365489207
+      spriteID: 2b82a24c2d9256047b65475093a49a14
+      internalID: 8639066506597270619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack2_5
+      name: Flight_5
       rect:
         serializedVersion: 2
-        x: 750
-        y: 0
-        width: 150
-        height: 150
+        x: 804
+        y: 56
+        width: 52
+        height: 37
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43080c4688354734581b0fa192605ff6
-      internalID: -1191510351576865934
+      spriteID: b03cc7e3212354449903d7c9f940e356
+      internalID: -4262185617143388622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack2_6
+      name: Flight_6
       rect:
         serializedVersion: 2
-        x: 900
-        y: 0
-        width: 150
-        height: 150
+        x: 950
+        y: 51
+        width: 54
+        height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c589e9a6e916d1242a1c30e823748d28
-      internalID: -8937499057154260928
+      spriteID: 9d78b014b5797f54bb5585f62835f8ab
+      internalID: 5066340549283584134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack2_7
+      name: Flight_7
       rect:
         serializedVersion: 2
-        x: 1050
-        y: 0
-        width: 150
-        height: 150
+        x: 1102
+        y: 49
+        width: 60
+        height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 795536e795049934d93720c7be230e20
-      internalID: 5293088307283036655
+      spriteID: 33f8db84057f2e143a48f74752555df2
+      internalID: 7784096630628774620
       vertices: []
       indices: 
       edges: []
@@ -330,14 +342,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack2_5: -1191510351576865934
-      Attack2_6: -8937499057154260928
-      Attack2_4: 5764228812365489207
-      Attack2_2: 4668938655123782945
-      Attack2_7: 5293088307283036655
-      Attack2_1: 8288915215451595207
-      Attack2_3: 5683539909772271658
-      Attack2_0: 7441861488978599509
+      Flight_7: 7784096630628774620
+      Flight_3: -4538786591655478766
+      Flight_5: -4262185617143388622
+      Flight_0: -4795363162621231457
+      Flight_4: 8639066506597270619
+      Flight_1: -3652676412848291748
+      Flight_6: 5066340549283584134
+      Flight_2: -596950462376016933
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -48,16 +48,14 @@ public class GoblinScript : MonoBehaviour
         distancePlayer= Vector2.Distance(transform.position,Player.transform.position);
         if(distancePlayer <  rangeVision && Mathf.Abs(distancePlayer) > 0.2f && playerController.life == true && GetComponent<EnemyController>().isDeadEnemy == false) {
             GetComponent<EnemyController>().Run();
-            FollowPlayer();
+            GetComponent<EnemyController>().FollowPlayer(speed,direction);
             
         }else{
-            DontFollowPlayer();
+            GetComponent<EnemyController>().DontFollowPlayer(direction);
             GetComponent<EnemyController>().NoRun();
 
         }
 
-
-        
 
         timeNextAtack -= Time.deltaTime;
         if(timeNextAtack <=  0 && playerController.healt >= 0 && Mathf.Abs(distancePlayer) < 1){     
@@ -84,34 +82,11 @@ public class GoblinScript : MonoBehaviour
     
     private void SelectAtackGoblin(){
         if(GetComponent<EnemyController>().healt > 0  ){
-
             if(timeNextAtack <= 0 && numAtack == 1){ animator.SetTrigger("AtackOne"); timeNextAtack = timeBetweenAtack; }
             if(timeBetweenAtack <= 0 && numAtack == 2){animator.SetTrigger("AtackTwo"); timeNextAtack = timeBetweenAtack; }
         }
     }
 
-    private void FollowPlayer(){ 
-        if(direction.x >= 0.0f ){ 
-            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-            transform.Translate(Vector3.right* speed * Time.deltaTime);
-            
-        }
-        else{ 
-            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f); 
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
-            
-        }
-    }
-
-    private void DontFollowPlayer(){;
-        if(direction.x >= 0.0f && GetComponent<EnemyController>().isDeadEnemy == false){ 
-            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);   
-        }
-        else{ 
-            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);         
-        }
-    }
-    
     private void OnDrawGizmos(){
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(controllerAtackEnemy.position, radioAtack);
