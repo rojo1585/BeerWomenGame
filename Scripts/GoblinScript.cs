@@ -46,7 +46,7 @@ public class GoblinScript : MonoBehaviour
 
         //Evaluar si el jugador esta dentro del rango de ataque o no 
         distancePlayer= Vector2.Distance(transform.position,Player.transform.position);
-        if(distancePlayer <  rangeVision && Mathf.Abs(distancePlayer) > 0.2f){
+        if(distancePlayer <  rangeVision && Mathf.Abs(distancePlayer) > 0.2f && playerController.life == true && GetComponent<EnemyController>().isDeadEnemy == false) {
             GetComponent<EnemyController>().Run();
             FollowPlayer();
             
