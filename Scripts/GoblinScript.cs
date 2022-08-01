@@ -91,7 +91,7 @@ public class GoblinScript : MonoBehaviour
     }
 
     private void FollowPlayer(){ 
-        if(direction.x >= 0.0f){ 
+        if(direction.x >= 0.0f ){ 
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             transform.Translate(Vector3.right* speed * Time.deltaTime);
             
@@ -104,7 +104,7 @@ public class GoblinScript : MonoBehaviour
     }
 
     private void DontFollowPlayer(){;
-        if(direction.x >= 0.0f){ 
+        if(direction.x >= 0.0f && GetComponent<EnemyController>().isDeadEnemy == false){ 
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);   
         }
         else{ 

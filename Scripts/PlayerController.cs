@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb2D;
+   // private BeerController beerController;
     
     [Header("PlayerStatus")]
     public float healt;
@@ -167,6 +168,12 @@ public class PlayerController : MonoBehaviour
         }else{life = false; return false;}
         
     }
+
+    //void OnTriggerEnter2D(Collider2D collision ){
+        //if(collision.CompareTag("BeerOne")){
+        //    beerController.AddLife();
+      //  }
+    //}
 
     
     

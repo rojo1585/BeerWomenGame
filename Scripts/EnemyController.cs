@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] public float healt;
     private Animator animator;
     
+    
     public bool isDeadEnemy = false;
     public float timeToDestroyEnd;
    
