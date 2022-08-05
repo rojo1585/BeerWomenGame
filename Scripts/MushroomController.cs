@@ -2,40 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinScript : MonoBehaviour
-{   
+public class MushroomController : MonoBehaviour
+{
     public GameObject Player;
-    [Header("AontrolAttack")]
+    private Animator animator;
     [SerializeField] private Transform controllerAtackEnemy;
     [SerializeField] private float radioAtack;
-    [SerializeField] private float damageHitGoblin;
+    [SerializeField] private float damageHitMushroom;
     [SerializeField] private float timeBetweenAtack;
     [SerializeField] private float timeNextAtack;
-    PlayerController playerController;
     [SerializeField] private int numAtack;
-    public float speed;
-    
+
+    PlayerController playerController;
+
+    [Header("Movement")]
+    [SerializeField] private float speed;
     [SerializeField] private float rangeVision;
     [SerializeField] private float distancePlayer;
     Vector3 direction;
-    
-    
-    //[SerializeField] private float healt;
-    //[SerializeField] private float prevHealt;
-     private Animator animator;
+
     // Start is called before the first frame update
     void Start()
-    {   
+    {
         Player = GameObject.Find("Player");
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
         numAtack = Random.Range(1,3);
-        radioAtack = 0.1f;
-        damageHitGoblin = 15.0f;
+        radioAtack = 0.2f;
+        damageHitMushroom = 40.0f;
         timeBetweenAtack = 2.4f;
         speed = 1.0f;
         rangeVision = 2.0f;
-
     }
 
     // Update is called once per frame
@@ -56,31 +53,31 @@ public class GoblinScript : MonoBehaviour
 
         }
 
-
         timeNextAtack -= Time.deltaTime;
         if(timeNextAtack <=  0 && playerController.healt >= 0 && Mathf.Abs(distancePlayer) < 1){     
             if(timeNextAtack <= 0 && numAtack == 1 && GetComponent<EnemyController>().healt > 0){GetComponent<EnemyController>().AtackOne(); timeNextAtack = timeBetweenAtack;}
             if(timeNextAtack <= 0 && numAtack == 2 && GetComponent<EnemyController>().healt > 0){GetComponent<EnemyController>().AtackTwo(); timeNextAtack = timeBetweenAtack; }
-            HitGlobin();
+            HitMushroom();
             numAtack = Random.Range(1,3);                      
         }
-  
+
+        
     }
-    //hace un mapeo de colicion y al colicionar con alo con la etiqueta player manda a llamar el metodo para restar vida al jugador
-    private void HitGlobin(){
+
+    private void HitMushroom(){
         Collider2D[] objects = Physics2D.OverlapCircleAll(controllerAtackEnemy.position, radioAtack);
 
         foreach(Collider2D colision in objects){
             if(colision.CompareTag("Player") && GetComponent<EnemyController>().isDeadEnemy == false){
-                colision.transform.GetComponent<PlayerController>().TakeDamagePlayer(damageHitGoblin);
+                colision.transform.GetComponent<PlayerController>().TakeDamagePlayer(damageHitMushroom);
                 colision.transform.GetComponent<PlayerController>().TakeHitPlayer();
                 
             }
             
         }
     }
-    
-    private void SelectAtackGoblin(){
+
+     private void SelectAtackMushroom(){
         if(GetComponent<EnemyController>().healt > 0  ){
             if(timeNextAtack <= 0 && numAtack == 1){ animator.SetTrigger("AtackOne"); timeNextAtack = timeBetweenAtack; }
             if(timeBetweenAtack <= 0 && numAtack == 2){animator.SetTrigger("AtackTwo"); timeNextAtack = timeBetweenAtack; }
