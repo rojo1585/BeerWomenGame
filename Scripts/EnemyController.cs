@@ -87,6 +87,18 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void MakeHit(float dmg, Transform controllerAtackEnemy, float radioAtack){
+        Collider2D[] objects = Physics2D.OverlapCircleAll(controllerAtackEnemy.position, radioAtack);
+
+        foreach(Collider2D colision in objects){
+            if(colision.CompareTag("Player") && GetComponent<EnemyController>().isDeadEnemy == false){
+                colision.transform.GetComponent<PlayerController>().TakeDamagePlayer(dmg);
+                colision.transform.GetComponent<PlayerController>().TakeHitPlayer();
+                
+            }
+            
+        }
+    }
     
     
 

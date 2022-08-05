@@ -61,24 +61,13 @@ public class GoblinScript : MonoBehaviour
         if(timeNextAtack <=  0 && playerController.healt >= 0 && Mathf.Abs(distancePlayer) < 1){     
             if(timeNextAtack <= 0 && numAtack == 1 && GetComponent<EnemyController>().healt > 0){GetComponent<EnemyController>().AtackOne(); timeNextAtack = timeBetweenAtack;}
             if(timeNextAtack <= 0 && numAtack == 2 && GetComponent<EnemyController>().healt > 0){GetComponent<EnemyController>().AtackTwo(); timeNextAtack = timeBetweenAtack; }
-            HitGlobin();
+            GetComponent<EnemyController>().MakeHit(damageHitGoblin,controllerAtackEnemy, radioAtack);
             numAtack = Random.Range(1,3);                      
         }
   
     }
     //hace un mapeo de colicion y al colicionar con alo con la etiqueta player manda a llamar el metodo para restar vida al jugador
-    private void HitGlobin(){
-        Collider2D[] objects = Physics2D.OverlapCircleAll(controllerAtackEnemy.position, radioAtack);
-
-        foreach(Collider2D colision in objects){
-            if(colision.CompareTag("Player") && GetComponent<EnemyController>().isDeadEnemy == false){
-                colision.transform.GetComponent<PlayerController>().TakeDamagePlayer(damageHitGoblin);
-                colision.transform.GetComponent<PlayerController>().TakeHitPlayer();
-                
-            }
-            
-        }
-    }
+    
     
     private void SelectAtackGoblin(){
         if(GetComponent<EnemyController>().healt > 0  ){
