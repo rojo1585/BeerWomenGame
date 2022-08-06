@@ -6,28 +6,36 @@ using UnityEngine.UI;
 public class BulletController : MonoBehaviour
 {
     private Animator animator;
-    public Slider healtSlider;
-    [SerializeField] PlayerController playerController;
+    
     [SerializeField] GameObject mushroomBullet;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float bulletDamage;
     [SerializeField] private float timeToDestroyBullet;
+    Vector3 direction;
+
+    GameObject Player;
 
     private bool destro;
     void Start()
     {
         animator = GetComponent<Animator>();
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        Player = GameObject.Find("Player");
         
         destro = false;
         bulletDamage = 30;
+        
     }
 
     void Update()
     {   
-        if(destro == false){
+
+        direction = Player.transform.position - transform.position;
+
+        if(destro == false && direction.x >= 0.0f){
             transform.Translate(Vector3.right * bulletSpeed * Time.deltaTime);
-           // transform.Translate(Vector3.up * bulletSpeed * Time.deltaTime);
+             
+        }else if(destro == false){
+            transform.Translate(Vector3.left * bulletSpeed * Time.deltaTime);
         }
         
         timeToDestroyBullet -= Time.deltaTime;
@@ -38,21 +46,21 @@ public class BulletController : MonoBehaviour
         
     }
 
-    private void Damage(){
-        healtSlider.value -= bulletDamage * 0.01f;;
-        playerController.healt -= bulletDamage;
-    }
+  
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player")){
+            collision.GetComponent<PlayerController>().TakeDamagePlayer(bulletDamage);
             animator.SetBool("DestroyBullet",true); 
             destro = true;
             timeToDestroyBullet = .3f;
-            transform.Translate(Vector3.right * 0);
-            Damage();
+            transform.Translate(Vector3.right * 0);  
         }
 
+
     }
+
+
 
 
   

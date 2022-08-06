@@ -10,6 +10,8 @@ public class MushroomController : MonoBehaviour
     [SerializeField] private Transform controllerAtackEnemy;
     [SerializeField] private Transform bulletSpawn;
     [SerializeField] private Transform bulletSpawn1;
+    [SerializeField] private Transform bulletSpawn2;
+    [SerializeField] private Transform bulletSpawn3;
     [SerializeField] private GameObject mushroomBullet;
     [SerializeField] private float radioAtack;
     [SerializeField] private float radioBullet;
@@ -19,6 +21,7 @@ public class MushroomController : MonoBehaviour
     [SerializeField] private int numAtack;
 
     PlayerController playerController;
+    
     
 
     [Header("Movement")]
@@ -32,7 +35,7 @@ public class MushroomController : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        
+        //bulletController = GameObject.Find("MushroomBullet").GetComponent<BulletController>();
         animator = GetComponent<Animator>();
         numAtack = Random.Range(1,3);
         radioAtack = 0.2f;
@@ -48,7 +51,8 @@ public class MushroomController : MonoBehaviour
         
         //obtener ubicacion del jugador
         direction = Player.transform.position - transform.position;
-        
+      
+
         //Evaluar si el jugador esta dentro del rango de ataque o no 
         distancePlayer= Vector2.Distance(transform.position,Player.transform.position);
         if(distancePlayer <  rangeVision && Mathf.Abs(distancePlayer) > 0.2f && playerController.life == true && GetComponent<EnemyController>().isDeadEnemy == false) {
@@ -66,10 +70,12 @@ public class MushroomController : MonoBehaviour
         if(timeNextAtack <=  0 && playerController.healt >= 0 && Mathf.Abs(distancePlayer) < 1){     
             if(timeNextAtack <= 0 && numAtack == 1 && GetComponent<EnemyController>().healt > 0){GetComponent<EnemyController>().AtackOne(); timeNextAtack = timeBetweenAtack;}
             if(timeNextAtack <= 0 && numAtack == 2 && GetComponent<EnemyController>().healt > 0){GetComponent<EnemyController>().AtackTwo(); timeNextAtack = timeBetweenAtack; }
-            if(timeNextAtack <= 0 && numAtack == 3 && GetComponent<EnemyController>().healt > 0){animator.SetTrigger("AtackThree"); timeNextAtack = timeBetweenAtack; }
+            //if(timeNextAtack <= 0 && numAtack == 3 && GetComponent<EnemyController>().healt > 0){animator.SetTrigger("AtackThree"); timeNextAtack = timeBetweenAtack; }
             GetComponent<EnemyController>().MakeHit(damageHitMushroom,controllerAtackEnemy,radioAtack);
             numAtack = Random.Range(1,4);      
                        
+        }else if(timeNextAtack <=  0 && Mathf.Abs(distancePlayer) > 1){
+            animator.SetTrigger("AtackThree"); timeNextAtack = timeBetweenAtack;
         }
 
         
@@ -86,6 +92,8 @@ public class MushroomController : MonoBehaviour
     private void GenerateBullet(){
         Instantiate(mushroomBullet, bulletSpawn.position, bulletSpawn.rotation);
         Instantiate(mushroomBullet, bulletSpawn1.position, bulletSpawn1.rotation);
+        Instantiate(mushroomBullet, bulletSpawn2.position, bulletSpawn2.rotation);
+        Instantiate(mushroomBullet, bulletSpawn3.position, bulletSpawn3.rotation);
     }
 
     private void OnDrawGizmos(){
