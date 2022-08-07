@@ -35,7 +35,7 @@ public class BulletController : MonoBehaviour
             transform.Translate(Vector3.right * bulletSpeed * Time.deltaTime);
              
         }else if(destro == false){
-            transform.Translate(Vector3.left * bulletSpeed * Time.deltaTime);
+            transform.Translate(Vector3.up * bulletSpeed * Time.deltaTime);
         }
         
         timeToDestroyBullet -= Time.deltaTime;
