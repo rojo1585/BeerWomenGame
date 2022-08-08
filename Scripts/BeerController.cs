@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BeerController : MonoBehaviour
 {   
-    public Slider healtSlider;
+   
     public float beerOneAddLife = 20;
     [SerializeField] PlayerController playerController;
     [SerializeField] Transform beerOne;
@@ -18,10 +18,6 @@ public class BeerController : MonoBehaviour
     
     
 
-    public void AddLife(){
-        healtSlider.value += beerOneAddLife * 0.01f;;
-        playerController.healt += beerOneAddLife;
-    }
     
     private void GenerateEmpyBeer(){
         Instantiate(empyBeer, beerOne.position, beerOne.rotation);
@@ -30,7 +26,7 @@ public class BeerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision){
         if(collision.CompareTag("Player")){
-            AddLife();
+            playerController.AddLife(beerOneAddLife);
             Destroy(gameObject);
             GenerateEmpyBeer();
            

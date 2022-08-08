@@ -142,6 +142,11 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
+    public void AddLife(float life){
+        healt += life;
+        GetComponent<HealtContrroller>().ChangeSliderAdd(life * 0.01f);
+    }
     public void AtackOne(){
         animator.SetTrigger("BasicAtack");
     }

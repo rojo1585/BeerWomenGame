@@ -10,4 +10,8 @@ public class HealtContrroller : MonoBehaviour
     public void ChangeSlider(float change){
         healtSlider.value -= change;
     }
+     public void ChangeSliderAdd(float change){
+        healtSlider.value += change;
+    }
+
 }
