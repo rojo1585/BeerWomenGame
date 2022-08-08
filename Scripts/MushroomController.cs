@@ -10,8 +10,7 @@ public class MushroomController : MonoBehaviour
     [SerializeField] private Transform controllerAtackEnemy;
     [SerializeField] private Transform bulletSpawn;
     [SerializeField] private Transform bulletSpawn1;
-    [SerializeField] private Transform bulletSpawn2;
-    [SerializeField] private Transform bulletSpawn3;
+    
     [SerializeField] private GameObject mushroomBullet;
     [SerializeField] private float radioAtack;
     [SerializeField] private float radioBullet;
@@ -67,14 +66,14 @@ public class MushroomController : MonoBehaviour
         }
 
         timeNextAtack -= Time.deltaTime;
-        if(timeNextAtack <=  0 && playerController.healt >= 0 && Mathf.Abs(distancePlayer) < 1){     
+        if(timeNextAtack <=  0 && playerController.healt >= 0 && Mathf.Abs(distancePlayer) < 1 && playerController.life == true && GetComponent<EnemyController>().isDeadEnemy == false){     
             if(timeNextAtack <= 0 && numAtack == 1 && GetComponent<EnemyController>().healt > 0){GetComponent<EnemyController>().AtackOne(); timeNextAtack = timeBetweenAtack;}
             if(timeNextAtack <= 0 && numAtack == 2 && GetComponent<EnemyController>().healt > 0){GetComponent<EnemyController>().AtackTwo(); timeNextAtack = timeBetweenAtack; }
             //if(timeNextAtack <= 0 && numAtack == 3 && GetComponent<EnemyController>().healt > 0){animator.SetTrigger("AtackThree"); timeNextAtack = timeBetweenAtack; }
             GetComponent<EnemyController>().MakeHit(damageHitMushroom,controllerAtackEnemy,radioAtack);
             numAtack = Random.Range(1,4);      
                        
-        }else if(timeNextAtack <=  0 && Mathf.Abs(distancePlayer) > 1){
+        }else if(timeNextAtack <=  0 && Mathf.Abs(distancePlayer) > 1 && Mathf.Abs(distancePlayer) < 4 && playerController.life == true && GetComponent<EnemyController>().isDeadEnemy == false){
             animator.SetTrigger("AtackThree"); timeNextAtack = timeBetweenAtack;
         }
 
@@ -92,8 +91,7 @@ public class MushroomController : MonoBehaviour
     private void GenerateBullet(){
         Instantiate(mushroomBullet, bulletSpawn.position, bulletSpawn.rotation);
         Instantiate(mushroomBullet, bulletSpawn1.position, bulletSpawn1.rotation);
-        Instantiate(mushroomBullet, bulletSpawn2.position, bulletSpawn2.rotation);
-        Instantiate(mushroomBullet, bulletSpawn3.position, bulletSpawn3.rotation);
+        
     }
 
     private void OnDrawGizmos(){
