@@ -27,6 +27,7 @@ public class BombController : MonoBehaviour
                 
             }
         }
+        CameraController.Instance.MoveCamera(1 , 1 , 1.5f);
         Instantiate(burstEfect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
