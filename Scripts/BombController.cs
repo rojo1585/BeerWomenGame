@@ -7,10 +7,15 @@ public class BombController : MonoBehaviour
     [SerializeField] private float radio;
     [SerializeField] private float burstForece;
     [SerializeField] private GameObject burstEfect;
+    BoxController boxController;
 
-
+    private void Start(){
+        boxController = GameObject.Find("BoxOne").GetComponent<BoxController>();
+        
+    }
     private void Update(){
         if(Input.GetKeyDown(KeyCode.Space)){Burst();}
+        boxController.DestroyBox();
     
     }
     public void Burst(){
@@ -19,6 +24,7 @@ public class BombController : MonoBehaviour
         //f
         foreach(Collider2D collision in objects){
             Rigidbody2D rb2D = collision.GetComponent<Rigidbody2D>();
+            
             if(rb2D != null){
                 Vector2 direction = collision.transform.position - transform.position;
                 float distance = 1 + direction.magnitude;
