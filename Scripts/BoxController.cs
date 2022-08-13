@@ -16,8 +16,12 @@ public class BoxController : MonoBehaviour
  
     public void DestroyBox(){
         
-        Instantiate(newBox, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        
+    }
+
+    public void CreateBox(){
+        Instantiate(newBox, transform.position, Quaternion.identity);
     }
     private void OnCollisionEneter2D(Collision2D collision){
         //if(collision.("Player")){DestroyBox();}

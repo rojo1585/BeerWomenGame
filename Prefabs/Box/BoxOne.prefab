@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6034255542142948736}
   m_Layer: 0
   m_Name: BoxOne
-  m_TagString: Untagged
+  m_TagString: Items
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,4 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51827495eed6e6946a1ea9a6d672cefc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newBox: {fileID: 8476547318741239812, guid: 255e775bb9c84d546aa9551df47cad71, type: 3}
+  newBox: {fileID: 8397349895721725804, guid: f119afb63a7463242849ac59fbfcc4c8, type: 3}

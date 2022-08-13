@@ -18,7 +18,15 @@ public class BombController : MonoBehaviour
         
     }
     public void Burst(){
-        
+        Collider2D[] initialBox = Physics2D.OverlapCircleAll(transform.position, radio);
+        foreach(Collider2D collision in initialBox){
+           BoxController box = collision.GetComponent<BoxController>();
+         if(box != null){    
+            box.DestroyBox();
+            box.CreateBox();
+
+            }
+        }
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, radio);
         //f
         //f
@@ -29,16 +37,12 @@ public class BombController : MonoBehaviour
                 Vector2 direction = collision.transform.position - transform.position;
                 float distance = 1 + direction.magnitude;
                 float finalForece = burstForece / distance;
-                rb2D.AddForce(direction * finalForece);
-                boxController.DestroyBox();
-    
-                
+                rb2D.AddForce(direction * finalForece);              
             }
         }
         CameraController.Instance.MoveCamera(1 , 1 , 1.5f);
         Instantiate(burstEfect, transform.position, Quaternion.identity);
-        
-        
+       
         Destroy(gameObject);
     }
     
