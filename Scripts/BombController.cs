@@ -15,10 +15,10 @@ public class BombController : MonoBehaviour
     }
     private void Update(){
         if(Input.GetKeyDown(KeyCode.Space)){Burst();}
-        boxController.DestroyBox();
-    
+        
     }
     public void Burst(){
+        
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, radio);
         //f
         //f
@@ -30,11 +30,15 @@ public class BombController : MonoBehaviour
                 float distance = 1 + direction.magnitude;
                 float finalForece = burstForece / distance;
                 rb2D.AddForce(direction * finalForece);
+                boxController.DestroyBox();
+    
                 
             }
         }
         CameraController.Instance.MoveCamera(1 , 1 , 1.5f);
         Instantiate(burstEfect, transform.position, Quaternion.identity);
+        
+        
         Destroy(gameObject);
     }
     

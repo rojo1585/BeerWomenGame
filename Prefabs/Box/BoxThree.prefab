@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2875200703595125792}
   - component: {fileID: 5513140296212651600}
   - component: {fileID: 3011995803927381948}
-  - component: {fileID: 7965406618618268546}
   - component: {fileID: 3880770238406950936}
   m_Layer: 0
   m_Name: BoxThree
@@ -113,19 +112,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.23632812, y: 0.17151642}
   m_EdgeRadius: 0
---- !u!114 &7965406618618268546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8397349895721725804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51827495eed6e6946a1ea9a6d672cefc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 0}
 --- !u!50 &3880770238406950936
 Rigidbody2D:
   serializedVersion: 4
