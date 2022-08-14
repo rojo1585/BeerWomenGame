@@ -15,7 +15,6 @@ public class BoxController : MonoBehaviour
     }
  
     public void DestroyBox(){
-        
         Destroy(gameObject);
         
     }

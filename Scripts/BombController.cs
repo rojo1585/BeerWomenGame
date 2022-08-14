@@ -7,10 +7,12 @@ public class BombController : MonoBehaviour
     [SerializeField] private float radio;
     [SerializeField] private float burstForece;
     [SerializeField] private GameObject burstEfect;
-    BoxController boxController;
+
+    
+    //BoxController boxController;
 
     private void Start(){
-        boxController = GameObject.Find("BoxOne").GetComponent<BoxController>();
+        
         
     }
     private void Update(){
@@ -18,6 +20,15 @@ public class BombController : MonoBehaviour
         
     }
     public void Burst(){
+
+         Collider2D[] searchPlayer = Physics2D.OverlapCircleAll(transform.position, radio);
+        foreach(Collider2D collision in searchPlayer){
+           PlayerController playerController = collision.GetComponent<PlayerController>();
+         if(playerController != null){    
+            playerController.TakeDamagePlayer(50);
+            }
+        }
+        //box
         Collider2D[] initialBox = Physics2D.OverlapCircleAll(transform.position, radio);
         foreach(Collider2D collision in initialBox){
            BoxController box = collision.GetComponent<BoxController>();
@@ -27,17 +38,16 @@ public class BombController : MonoBehaviour
 
             }
         }
+        //explosion
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, radio);
-        //f
-        //f
         foreach(Collider2D collision in objects){
             Rigidbody2D rb2D = collision.GetComponent<Rigidbody2D>();
-            
+           
             if(rb2D != null){
                 Vector2 direction = collision.transform.position - transform.position;
                 float distance = 1 + direction.magnitude;
                 float finalForece = burstForece / distance;
-                rb2D.AddForce(direction * finalForece);              
+                rb2D.AddForce(direction * finalForece);                
             }
         }
         CameraController.Instance.MoveCamera(1 , 1 , 1.5f);
@@ -45,6 +55,8 @@ public class BombController : MonoBehaviour
        
         Destroy(gameObject);
     }
+
+
     
     private void OnDrawGizmos(){
         Gizmos.color = Color.green;
