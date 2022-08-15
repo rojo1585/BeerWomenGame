@@ -20,13 +20,22 @@ public class BombController : MonoBehaviour
         
     }
     public void Burst(){
+        Collider2D[] searchEnemy = Physics2D.OverlapCircleAll(transform.position, radio);
+        foreach(Collider2D collision in searchEnemy){
+            EnemyController enemyController = collision.GetComponent<EnemyController>();
+            if(enemyController != null){enemyController.TakeDamage(100);}
+        }
 
+        //damage player
          Collider2D[] searchPlayer = Physics2D.OverlapCircleAll(transform.position, radio);
         foreach(Collider2D collision in searchPlayer){
            PlayerController playerController = collision.GetComponent<PlayerController>();
+           
          if(playerController != null){    
             playerController.TakeDamagePlayer(50);
             }
+         
+
         }
         //box
         Collider2D[] initialBox = Physics2D.OverlapCircleAll(transform.position, radio);
