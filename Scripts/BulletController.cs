@@ -23,6 +23,7 @@ public class BulletController : MonoBehaviour
         
         destro = false;
         bulletDamage = 30;
+        timeToDestroyBullet = 3.0f;
         
     }
 
@@ -39,7 +40,7 @@ public class BulletController : MonoBehaviour
         }
         
         timeToDestroyBullet -= Time.deltaTime;
-        if(destro == true && timeToDestroyBullet <= 0)
+        if(timeToDestroyBullet <= 0)
         {
             Destroy(gameObject);
         }
