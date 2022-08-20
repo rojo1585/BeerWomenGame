@@ -6,6 +6,12 @@ public class SpikeController : MonoBehaviour
 {
     Animator animator;
     PlayerController playerController;
+    Rigidbody2D rb2D;
+
+
+    void Awake(){
+        rb2D = GetComponent<Rigidbody2D>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +25,15 @@ public class SpikeController : MonoBehaviour
         
     }
 
+    private void DestroySpikes(){
+        Destroy(gameObject);
+    }
+    public void FallSpike(){
+        rb2D.gravityScale = 0.5f;
+    }
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.CompareTag("Ground")){
             animator.SetTrigger("Broken");
-            Destroy(gameObject);
         }else if(collision.CompareTag("Player")){playerController.TakeDamagePlayer(50);}
     }
 }

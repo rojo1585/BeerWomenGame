@@ -7,16 +7,19 @@ public class BombController : MonoBehaviour
     [SerializeField] private float radio;
     [SerializeField] private float burstForece;
     [SerializeField] private GameObject burstEfect;
+    [SerializeField] private float timeToDestroyEnd;
 
     
     //BoxController boxController;
 
     private void Start(){
         
-        
+        timeToDestroyEnd = 7;
     }
     private void Update(){
-        if(Input.GetKeyDown(KeyCode.Space)){Burst();}
+
+        timeToDestroyEnd -= Time.deltaTime;
+        if(timeToDestroyEnd <= 0){Burst();}
         
     }
     public void Burst(){
