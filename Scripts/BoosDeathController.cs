@@ -20,7 +20,7 @@ public class BoosDeathController : MonoBehaviour
     PlayerController playerController;
     
     
-
+    private bool isDeadEnemy ;
     [Header("Movement")]
     [SerializeField] private float speed;
     [SerializeField] private float rangeVision;
@@ -37,6 +37,7 @@ public class BoosDeathController : MonoBehaviour
         timeBetweenAtack = 2.4f;
         speed = 1.0f;
         rangeVision = 2.0f;
+        isDeadEnemy = false;
         
     }
 
@@ -46,19 +47,42 @@ public class BoosDeathController : MonoBehaviour
 
         direction = Player.transform.position - transform.position;
       
-
+    
         //Evaluar si el jugador esta dentro del rango de ataque o no 
         distancePlayer = Vector2.Distance(transform.position,Player.transform.position);
-        if(distancePlayer <  rangeVision && Mathf.Abs(distancePlayer) > 0.2f && playerController.life == true && GetComponent<EnemyController>().isDeadEnemy == false) {
-            GetComponent<EnemyController>().Run();
-            GetComponent<EnemyController>().FollowPlayer(speed,direction);
-          
+        if(distancePlayer <  rangeVision && Mathf.Abs(distancePlayer) > 0.2f && playerController.life == true && isDeadEnemy == false) {
+            Run();
+            DistanceForCast();
             
         }else{
-            GetComponent<EnemyController>().DontFollowPlayer(direction);
-            GetComponent<EnemyController>().NoRun();
+            NoRun();
+            DontFollowPlayer();
 
         }
         
     }
+    private void Run(){animator.SetBool("Run", true);}
+    private void NoRun(){animator.SetBool("Run", false);}
+    private void DistanceForCast(){ 
+       if(direction.x >= 0.0f ){ 
+            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            transform.Translate(Vector3.left* speed * Time.deltaTime);
+            
+        }
+        else{ 
+            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f); 
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            
+        }
+    }
+
+    public void DontFollowPlayer(){;
+        if(direction.x >= 0.0f && isDeadEnemy == false){ 
+            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);   
+        }
+        else{ 
+            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);         
+        }
+    }
+
 }

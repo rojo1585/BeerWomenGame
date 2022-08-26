@@ -67,12 +67,12 @@ public class EnemyController : MonoBehaviour
     //Girar al enemigo a ver al jugador y seguir si esnta en el rango de vicion
     public void FollowPlayer(float speed , Vector3 direction){ 
        if(direction.x >= 0.0f ){ 
-            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             transform.Translate(Vector3.right* speed * Time.deltaTime);
             
         }
         else{ 
-            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f); 
+            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f); 
             transform.Translate(Vector3.left * speed * Time.deltaTime);
             
         }
