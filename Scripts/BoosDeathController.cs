@@ -7,8 +7,10 @@ public class BoosDeathController : MonoBehaviour
 
     public GameObject Player;
     private Animator animator;
+    private GameObject spell;
 
     [SerializeField] private Transform controllerAtackEnemy;
+    [SerializeField] private Transform ControlCast;
     
     
     [SerializeField] private float radioAtack;
@@ -38,6 +40,7 @@ public class BoosDeathController : MonoBehaviour
         speed = 1.0f;
         rangeVision = 2.0f;
         isDeadEnemy = false;
+        radioAtack = 0.3f;
         
     }
 
@@ -46,11 +49,12 @@ public class BoosDeathController : MonoBehaviour
     {
 
         direction = Player.transform.position - transform.position;
+        
       
     
         //Evaluar si el jugador esta dentro del rango de ataque o no 
         distancePlayer = Vector2.Distance(transform.position,Player.transform.position);
-        if(distancePlayer <  rangeVision && Mathf.Abs(distancePlayer) > 0.2f && playerController.life == true && isDeadEnemy == false) {
+        if(distancePlayer <  rangeVision && Mathf.Abs(distancePlayer) > 0.5f && playerController.life == true && isDeadEnemy == false) {
             Run();
             DistanceForCast();
             
@@ -60,6 +64,10 @@ public class BoosDeathController : MonoBehaviour
 
         }
         
+    }
+    private void Spell(){
+        ControlCast.position = Player.transform.position;
+        Instantiate(spell, ControlCast.position, ControlCast.rotation);
     }
     private void Run(){animator.SetBool("Run", true);}
     private void NoRun(){animator.SetBool("Run", false);}
@@ -78,11 +86,29 @@ public class BoosDeathController : MonoBehaviour
 
     public void DontFollowPlayer(){;
         if(direction.x >= 0.0f && isDeadEnemy == false){ 
-            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);   
+            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);   
         }
         else{ 
-            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);         
+            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);         
         }
     }
 
+    private void OnDrawGizmos(){
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(controllerAtackEnemy.position, radioAtack);
+      
+    }
+
+    private void MakeHitBoss(){
+        Collider2D[] objects = Physics2D.OverlapCircleAll(controllerAtackEnemy.position, radioAtack);
+
+        foreach(Collider2D colision in objects){
+            if(colision.CompareTag("Player") && GetComponent<EnemyController>().isDeadEnemy == false){
+                colision.transform.GetComponent<PlayerController>().TakeDamagePlayer(50);
+                colision.transform.GetComponent<PlayerController>().TakeHitPlayer();
+                
+            }
+            
+        }
+    }
 }
