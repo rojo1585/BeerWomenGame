@@ -19,7 +19,7 @@ public class SpellController : MonoBehaviour
         Player = GameObject.Find("Player");
         spellCollider = spellCollider.GetComponent<BoxCollider2D>();
         offsetBoxCollider = 0.02f;
-        damage = 50.0f;
+        damage = 250.0f;
     }
 
     // Update is called once per frame

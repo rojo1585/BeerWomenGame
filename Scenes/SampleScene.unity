@@ -2099,6 +2099,8 @@ GameObject:
   - component: {fileID: 516435593}
   - component: {fileID: 516435592}
   - component: {fileID: 516435591}
+  - component: {fileID: 516435594}
+  - component: {fileID: 516435595}
   m_Layer: 0
   m_Name: DarkSkull
   m_TagString: Untagged
@@ -2186,13 +2188,42 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516435590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 174.85768, y: 22.637423, z: 0}
+  m_LocalPosition: {x: 174.757, y: 23.658, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &516435594
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516435590}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.060165405, y: -0.008113861}
+  m_Size: {x: 0.07067871, y: 0.07067871}
+  m_Direction: 0
+--- !u!114 &516435595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516435590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ba11538c1977d941a238c8c84dba92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1049559430}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -25591,5 +25622,9 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1049559426}
+    - target: {fileID: 6945557835348760934, guid: 8bcbf236b098c194cbf0677ae5c16876, type: 3}
+      propertyPath: timeBetweenAtack
+      value: 1.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bcbf236b098c194cbf0677ae5c16876, type: 3}
