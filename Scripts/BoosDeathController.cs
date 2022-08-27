@@ -7,7 +7,7 @@ public class BoosDeathController : MonoBehaviour
 
     public GameObject Player;
     private Animator animator;
-    private GameObject spell;
+    [SerializeField] private GameObject spell;
 
     [SerializeField] private Transform controllerAtackEnemy;
     [SerializeField] private Transform ControlCast;
@@ -65,8 +65,8 @@ public class BoosDeathController : MonoBehaviour
         }
         
     }
-    private void Spell(){
-        ControlCast.position = Player.transform.position;
+    private void CastSpell(){
+       
         Instantiate(spell, ControlCast.position, ControlCast.rotation);
     }
     private void Run(){animator.SetBool("Run", true);}
@@ -104,11 +104,12 @@ public class BoosDeathController : MonoBehaviour
 
         foreach(Collider2D colision in objects){
             if(colision.CompareTag("Player") && GetComponent<EnemyController>().isDeadEnemy == false){
-                colision.transform.GetComponent<PlayerController>().TakeDamagePlayer(50);
+                colision.transform.GetComponent<PlayerController>().TakeDamagePlayer(damageHitBoss);
                 colision.transform.GetComponent<PlayerController>().TakeHitPlayer();
                 
             }
             
         }
     }
+
 }
