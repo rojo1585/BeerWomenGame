@@ -7,6 +7,7 @@ public class BoosDeathController : MonoBehaviour
 
     public GameObject Player;
     private Animator animator;
+    public Transform pointToTeleportOne;
     [SerializeField] private GameObject spell;
 
     [SerializeField] private Transform controllerAtackEnemy;
@@ -18,6 +19,9 @@ public class BoosDeathController : MonoBehaviour
     [SerializeField] private float timeBetweenAtack;
     [SerializeField] private float timeNextAtack;
     [SerializeField] private int numAtack;
+    [SerializeField] private float timeToTeleport;
+    [SerializeField] private float timeBetweenTeleport;
+    private bool teleport;
 
     PlayerController playerController;
     
@@ -41,17 +45,20 @@ public class BoosDeathController : MonoBehaviour
         rangeVision = 2.0f;
         isDeadEnemy = false;
         radioAtack = 0.3f;
+        teleport = false;
         
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        if(teleport){timeToTeleport -= Time.deltaTime;}
+        
+        if(timeToTeleport <= 0){isTeleAnimation(); timeToTeleport=timeBetweenTeleport; }
+
+
 
         direction = Player.transform.position - transform.position;
-        
-      
-    
         //Evaluar si el jugador esta dentro del rango de ataque o no 
         distancePlayer = Vector2.Distance(transform.position,Player.transform.position);
         if(distancePlayer <  rangeVision && Mathf.Abs(distancePlayer) > 0.5f && playerController.life == true && isDeadEnemy == false) {
@@ -110,6 +117,18 @@ public class BoosDeathController : MonoBehaviour
             }
             
         }
+    }
+    private void isTele(){
+        teleport =true;
+    }
+    private void isTeleAnimation(){
+        animator.SetTrigger("Teleport");
+        teleport = false;
+    }
+
+    private void Teleport(){
+        transform.position = pointToTeleportOne.position;
+        
     }
 
 }
