@@ -8,6 +8,9 @@ public class BoosDeathController : MonoBehaviour
     public GameObject Player;
     private Animator animator;
     public Transform pointToTeleportOne;
+    public Transform pointToTeleportTwo;
+    public Transform pointToTeleportThree;
+
     [SerializeField] private GameObject spell;
 
     [SerializeField] private Transform controllerAtackEnemy;
@@ -21,6 +24,7 @@ public class BoosDeathController : MonoBehaviour
     [SerializeField] private int numAtack;
     [SerializeField] private float timeToTeleport;
     [SerializeField] private float timeBetweenTeleport;
+    private int selectPointTeleport;
     private bool teleport;
 
     PlayerController playerController;
@@ -127,8 +131,11 @@ public class BoosDeathController : MonoBehaviour
     }
 
     private void Teleport(){
-        transform.position = pointToTeleportOne.position;
-        
+        selectPointTeleport = Random.Range(1,3);
+        if(selectPointTeleport == 1){transform.position = pointToTeleportOne.position;}
+        if(selectPointTeleport == 2){transform.position = pointToTeleportTwo.position;}
+        if(selectPointTeleport == 3){transform.position = pointToTeleportThree.position;}
+               
     }
 
 }
