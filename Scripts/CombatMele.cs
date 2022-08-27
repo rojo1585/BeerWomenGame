@@ -17,11 +17,11 @@ public class CombatMele : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        radioAtack = 0.1f;
+        radioAtack = 0.2f;
         damageHitPlayerBasicAtack = 15;
         damageHitPlayerDashAtack = 30;
-        timeBetweenHit = 1.8f;
-        timeBetweenHitDash = 3.4f;
+        timeBetweenHit = 0.5f;
+        timeBetweenHitDash = 0.5f;
         
     }
 
@@ -40,15 +40,20 @@ public class CombatMele : MonoBehaviour
         Collider2D[] objects = Physics2D.OverlapCircleAll(controllerAtack.position, radioAtack);
 
         foreach(Collider2D colision in objects){
-            if(colision.CompareTag("Enemy")){
-                if(Input.GetButtonDown("Fire1")){                    
-                        colision.transform.GetComponent<EnemyController>().TakeDamage(damageHitPlayerBasicAtack);
-                        colision.transform.GetComponent<EnemyController>().TakeHit();
-                }else if(Input.GetButtonDown("Fire2") ){
-                        colision.transform.GetComponent<EnemyController>().TakeDamage(damageHitPlayerDashAtack);
-                        colision.transform.GetComponent<EnemyController>().TakeHit();
-                    }
-                    
+            if(colision.CompareTag("Enemy")){                    
+                colision.transform.GetComponent<EnemyController>().TakeDamage(damageHitPlayerBasicAtack);
+                colision.transform.GetComponent<EnemyController>().TakeHit();    
+            }
+        }
+    }
+
+    private void HitDash(){
+        Collider2D[] objects = Physics2D.OverlapCircleAll(controllerAtack.position, radioAtack);
+
+        foreach(Collider2D colision in objects){
+            if(colision.CompareTag("Enemy")){         
+                colision.transform.GetComponent<EnemyController>().TakeDamage(damageHitPlayerDashAtack);
+                colision.transform.GetComponent<EnemyController>().TakeHit();
             }
         }
     }
@@ -56,11 +61,9 @@ public class CombatMele : MonoBehaviour
     private void ControlAnimationAtack(){
         if(Input.GetButtonDown("Fire1")  && timeNextHit <=0 ){
             GetComponent<PlayerController>().AtackOne();
-            Hit();
              timeNextHit = timeBetweenHit;
         }else if(Input.GetButtonDown("Fire2") && timeNextHitDash <= 0){
             GetComponent<PlayerController>().AtackDash();
-            Hit();
             timeNextHitDash = timeBetweenHitDash;
         }
     }

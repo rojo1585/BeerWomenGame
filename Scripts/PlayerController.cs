@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         //instacia de los objetos 
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        healt = 100;
+        
         speedMovement = 100;
         motionSmoot = 0.1f;
         jumpForce = 199;
@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
     //toma el daño del jugador para evaluar su muerte
     public void TakeDamagePlayer(float damage){
         healt -= damage;
-        GetComponent<HealtContrroller>().ChangeSlider(damage * 0.01f);
+        GetComponent<HealtContrroller>().ChangeSlider(damage);
         if(healt <= 0){
             DeadPlayer();
         }
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
     public void AddLife(float life){
         healt += life;
-        GetComponent<HealtContrroller>().ChangeSliderAdd(life * 0.01f);
+        GetComponent<HealtContrroller>().ChangeSliderAdd(life);
     }
     public void AtackOne(){
         animator.SetTrigger("BasicAtack");

@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  healt: 100
+  healt: 200
   isDeadEnemy: 0
   timeToDestroyEnd: 10
 --- !u!114 &4030180730135651772

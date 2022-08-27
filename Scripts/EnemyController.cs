@@ -20,7 +20,6 @@ public class EnemyController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         Player = GameObject.Find("Player");
-        healt = 100;
         timeToDestroyEnd = 10.0f;
 
     }
