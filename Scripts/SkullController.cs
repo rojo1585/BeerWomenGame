@@ -8,6 +8,7 @@ public class SkullController : MonoBehaviour
     [SerializeField] private Transform player;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private float timeToDestroySkull;
    
     private float damage;
      // Start is called before the first frame update
@@ -22,20 +23,22 @@ public class SkullController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timeToDestroySkull -= Time.deltaTime;
+        if(timeToDestroySkull < 0){DestroySkull();}
     }
 
     public void TurnSkull(Vector3 target){
         if(transform.position.x > target.x){spriteRenderer.flipX = true;}else{spriteRenderer.flipX = false;}
     }
 
-    private void DestroySkull(){
-        Destroy(gameObject);
+    public void DestroySkull(){
+        animator.SetBool("Destroy",true);
     }
 
-    private void MakeDamage(){
+
+    private void Des(){
         //
-       
+       Destroy(gameObject);
     }
 
 

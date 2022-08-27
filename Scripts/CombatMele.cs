@@ -20,8 +20,8 @@ public class CombatMele : MonoBehaviour
         radioAtack = 0.2f;
         damageHitPlayerBasicAtack = 15;
         damageHitPlayerDashAtack = 30;
-        timeBetweenHit = 0.5f;
-        timeBetweenHitDash = 0.5f;
+        timeBetweenHit = .6f;
+        timeBetweenHitDash = 1.5f;
         
     }
 
@@ -56,6 +56,18 @@ public class CombatMele : MonoBehaviour
                 colision.transform.GetComponent<EnemyController>().TakeHit();
             }
         }
+    }
+
+    private void HitBullet(){
+        Collider2D[] objects = Physics2D.OverlapCircleAll(controllerAtack.position, radioAtack);
+
+        foreach(Collider2D colision in objects){
+            if(colision.CompareTag("Bullet")){         
+                colision.transform.GetComponent<SkullController>().DestroySkull();
+                
+            }
+        }
+
     }
     //Controlar animaciones dependiendo del golpe realizado
     private void ControlAnimationAtack(){
