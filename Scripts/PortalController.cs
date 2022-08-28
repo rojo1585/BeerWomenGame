@@ -11,7 +11,7 @@ public class PortalController : MonoBehaviour
     //s Start is called before the first frame update
     void Start()
     {
-        timeToSpawn = 5;
+        timeBetweenSpawn = 5;
     }
 
     // Update is called once per frame

@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9189064768116995147}
-  m_LocalRotation: {x: -0, y: -0, z: -0.69051313, w: 0.7233199}
+  m_LocalRotation: {x: 0, y: 0, z: -0.69051015, w: 0.72332275}
   m_LocalPosition: {x: 248.411, y: 22.401, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -120,9 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skullSpawn: {fileID: 9189064769127164627}
-  skull: {fileID: 2704136814764481150, guid: 1b51f496f348c524ab41205dccb47a7b, type: 3}
   timeToSpawn: 0
-  timeBetweenSpawn: 1
+  timeBetweenSpawn: 3
 --- !u!1 &9189064769127164626
 GameObject:
   m_ObjectHideFlags: 0
