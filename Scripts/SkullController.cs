@@ -9,6 +9,7 @@ public class SkullController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private float timeToDestroySkull;
+    private float timeBetweenDestroy;
    
     private float damage;
      // Start is called before the first frame update
@@ -16,7 +17,8 @@ public class SkullController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        
+        timeToDestroySkull = 5;
+        timeBetweenDestroy = 5;
         damage = 100;
     }
 
@@ -24,7 +26,7 @@ public class SkullController : MonoBehaviour
     void Update()
     {
         timeToDestroySkull -= Time.deltaTime;
-        if(timeToDestroySkull < 0){DestroySkull();}
+        if(timeToDestroySkull < 0){DestroySkull(); timeToDestroySkull = timeBetweenDestroy; }
     }
 
     public void TurnSkull(Vector3 target){
@@ -32,20 +34,24 @@ public class SkullController : MonoBehaviour
     }
 
     public void DestroySkull(){
-        animator.SetBool("Destroy",true);
+        timeToDestroySkull = timeBetweenDestroy;
+        animator.SetBool("Destroy",true);   
     }
 
 
     private void Des(){
         //
-       Destroy(gameObject);
+       animator.SetBool("Destroy",false);
+       gameObject.SetActive(false);
+       
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.CompareTag("Player")){
-            animator.SetBool("Destroy",true);
+            DestroySkull();
             collision.GetComponent<PlayerController>().TakeDamagePlayer(damage);
+
         }
     }
 
